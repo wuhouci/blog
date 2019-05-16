@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/wuhouci/blog/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/wuhouci/blog/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+/etc/sysctl.conf
+net.ipv4.ip_forward=1
+#sysctl -p
+#firewall-cmd --add-masquerade --zone-public
+#firewall-cmd --query-masquerade
+#firewall-cmd --direct --passthrough ipv4 -t nat -A POSTROUTING -s 192.168.*.*/* -j SNAT --to-source *.*.*.*
+####
+firewall-cmd --add-forward-port=port=3389:proto=tcp:toport=3389:toaddr=192.168.*.*
+#firewall-cmd --add-masquerade --zone=public --permanet
+####
+#nmcli con add type bridge con-name br-ex ifname br-ex autoconnect yes
+#nmcli con add type bridge con-name br-in ifname br-in autoconnect yes
+#nmcli con show
+//#nmcli connection delete ?ifname?
+//#nmcli connection delete "~name~"
+//#nmcli connection add type bridge-slave con-name ?ifname? autoconnect yes master br-ex
+//#firewall-cmd --zone=external --change-interface=?briname?
+//#firewall-cmd --zone=internal --change-interface=?briname?
+//#firewall-cmd --list-all-zones
+//#firewall-cmd --zone=external --add-masquerade
+//#firewall-cmd --zone=external --list-all
+//#firewall-cmd --direct --passthrough ipv4 -t nat -I POSTROUTING -o br-ex -j MAQQUERADE -s 192.168.*.*/*
+//#nmcli conn modify br-in ipv4.addresses 192.168.*.*/* autoconnect yes ipv4.method manual
+//#nmcli conn up br-in
+//#ip addr
+//#firewall-cmd --zone=external --add-forward-port=port=3389:proto=tcp:toport=3389:toaddr=192.168.*.* 
+//#firewall-cmd --zone=external --list-forward-ports
